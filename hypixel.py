@@ -182,7 +182,7 @@ class Player:
         playerInfo['rank'] = Player.getRank(self)
         playerInfo['networkLevel'] = Player.getLevel(self)
         JSONKeys = ['karma', 'firstLogin', 'lastLogin',
-                    'mcVersionRp', 'networkExp', 'socialMedia', 'prefix']
+                    'mcVersionRp', 'networkExp', 'socialMedia', 'prefix', 'mostRecentGameType', 'knownAliases', 'stats']
         for item in JSONKeys:
             try:
                 playerInfo[item] = JSON[item]
@@ -227,10 +227,10 @@ class Player:
                         continue
                     dirtyRank = JSON[Location].title()
                     dirtyRank = dirtyRank.replace("_", " ").replace("Mvp", "MVP").replace("Vip", "VIP").replace("Superstar", "MVP++") # pylint: disable=line-too-long
-                    playerRank['rank'] = dirtyRank.replace(" Plus", "+").replace("Youtuber", "YouTube")
+                    playerRank['rank'] = dirtyRank.replace(" Plus", "+").replace("Youtuber", "YOUTUBE")
 
         if 'rank' not in playerRank:
-            playerRank['rank'] = 'Non'
+            playerRank['rank'] = 'DEFAULT'
 
         return playerRank
 
